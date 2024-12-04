@@ -56,6 +56,9 @@ const ScribePage = () => {
   const [autoSaveStatus, setAutoSaveStatus] = useState<
     "saved" | "saving" | "error" | ""
   >("");
+  const MAX_RECORDING_TIME = 300; // 5 minutes in seconds
+  const [recordingTime, setRecordingTime] = useState(0);
+  const recordingTimerRef = useRef<NodeJS.Timeout>();
 
   // Disable the exhaustive-deps warning for this specific hook
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -129,6 +132,27 @@ const ScribePage = () => {
     try {
       setIsCancelled(false);
       chunksRef.current = [];
+      setRecordingTime(0);
+
+      // Start the recording timer
+      recordingTimerRef.current = setInterval(() => {
+        setRecordingTime((prevTime) => {
+          if (prevTime >= MAX_RECORDING_TIME - 1) {
+            stopRecording();
+            clearInterval(recordingTimerRef.current);
+            toast("Recording stopped - maximum duration reached", {
+              duration: 4000,
+              style: {
+                background: "rgba(147, 51, 234, 0.1)",
+                border: "1px solid rgba(147, 51, 234, 0.2)",
+                color: "#fff",
+              },
+            });
+            return MAX_RECORDING_TIME;
+          }
+          return prevTime + 1;
+        });
+      }, 1000);
 
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       streamRef.current = stream;
@@ -199,6 +223,9 @@ const ScribePage = () => {
 
   const stopRecording = () => {
     if (mediaRecorderRef.current) {
+      if (recordingTimerRef.current) {
+        clearInterval(recordingTimerRef.current);
+      }
       mediaRecorderRef.current.stop();
       setIsRecording(false);
       setIsPaused(false);
@@ -747,6 +774,12 @@ const ScribePage = () => {
     }
   };
 
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  };
+
   return (
     <div className="relative min-h-screen w-full bg-zinc-950">
       {/* Animated background pattern */}
@@ -999,6 +1032,10 @@ const ScribePage = () => {
         <div className="absolute left-1/2 transform -translate-x-1/2 bottom-8 w-96 bg-black/20 backdrop-blur-lg rounded-2xl p-4 border border-white/10">
           <div className="flex flex-col gap-4">
             <AudioVisualizer data={audioData} />
+
+            <div className="text-center text-white/70 text-sm">
+              {formatTime(recordingTime)} / {formatTime(MAX_RECORDING_TIME)}
+            </div>
 
             {/* Control buttons */}
             <div className="flex items-center justify-center gap-4">

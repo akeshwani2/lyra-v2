@@ -319,3 +319,11 @@
   background-color: rgba(17, 24, 39, 0.8);
   backdrop-filter: blur(8px);
 }
+
+
+
+/* Add this to your existing ProseMirror styles */
+.ProseMirror .math-node {
+  user-select: none;
+  cursor: pointer;
+}
