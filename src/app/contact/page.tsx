@@ -95,24 +95,7 @@ export default function Page() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  if (isMobile) {
-    return (
-      <div className='min-h-screen w-full fixed inset-0 flex flex-col items-center justify-center p-8 text-center bg-gradient-to-b from-gray-900 to-black'>
-        <div className='space-y-6 max-w-md mx-auto'>
-          {/* Mobile Icon */}
-          <div className='text-6xl mb-8'>
-            📱
-          </div>
-          <h1 className='text-3xl font-bold text-white mb-4'>
-            Lyra is not optimized for mobile screens yet
-          </h1>
-          <p className='text-gray-400 text-lg'>
-            Please visit us on a desktop or laptop computer for the best experience.
-          </p>
-        </div>
-      </div>
-    );
-  }
+
 
   return (
     <div 
@@ -132,13 +115,13 @@ export default function Page() {
 
       {/* Static grid overlay */}
       <div
-        className="absolute inset-0 bg-[rgb(74,32,138)] bg-blend-overlay [mask-image:radial-gradient(50%_50%_at_50%_35%,black,transparent)] group-hover:opacity-0 transition duration-700"
+        className="absolute inset-0 z-[1] bg-[rgb(74,32,138)] bg-blend-overlay [mask-image:radial-gradient(50%_50%_at_50%_35%,black,transparent)] group-hover:opacity-0 transition duration-700"
         style={{ backgroundImage: `url(${gridLines.src})` }}
       />
 
       {/* Mouse-following grid overlay */}
       <motion.div
-        className="absolute inset-0 bg-[rgb(74,32,138)] bg-blend-overlay opacity-0 group-hover:opacity-100 transition duration-700"
+        className="absolute inset-0 z-[1] bg-[rgb(74,32,138)] bg-blend-overlay opacity-0 group-hover:opacity-100 transition duration-700"
         style={{ 
           maskImage,
           backgroundImage: `url(${gridLines.src})` 
@@ -146,8 +129,8 @@ export default function Page() {
       />
 
       {/* Main content */}
-      <div className="flex-1 flex items-start">
-        <div className="container relative z-10">
+      <div className="flex-1 flex items-start z-[2] relative">
+        <div className="container relative">
           <div className='mx-auto mt-20'>
             {/* Contact Form */}
             <h1 className="text-6xl md:leading-none font-semibold tracking-tighter bg-white bg-[radial-gradient(100%_100%_at_top_left,white,white,rgb(74,72,138,.5))] text-transparent bg-clip-text text-center sm:pb-3 md:pb-5 lg:pb-7">
@@ -203,7 +186,7 @@ export default function Page() {
               </div>
               
               {submitStatus === 'success' && (
-                <div className="text-green-400 text-center">Message sent successfully!</div>
+                <div className="text-green-400 text-center">Message sent successfully! I will get back to you as soon as possible.</div>
               )}
               
               {submitStatus === 'error' && (
