@@ -13,6 +13,8 @@ import dukeLogo from "@/assets/dukelogo_white.png";
 import mitLogo from "@/assets/mit_logo_std_rgb_white.png";
 
 import { motion } from "framer-motion";
+import Image from 'next/image';
+
 const LogoTicker = () => {
   return (
     <section className="py-20 md:py-24">
@@ -47,9 +49,11 @@ const LogoTicker = () => {
                 acmeLogo,
               ].map((logo, index) => (
                 <div key={`${logo.src}-${index}`} className="flex items-center justify-center h-20">
-                  <img
+                  <Image
                     src={logo.src}
                     alt=""
+                    width={logo === mitLogo ? 100 : 80}
+                    height={0}
                     className={`w-auto ${logo === mitLogo ? 'h-10' : 'h-8'} object-contain`}
                   />
                 </div>

@@ -72,7 +72,7 @@ const CallToAction = () => {
               AI-powered productivity for everyone.
             </h2>
             <p className="text-center text-lg md:text-xl max-w-xs mx-auto text-white/70 px-4 mt-5 tracking-tight">
-              It's time to achieve clear, impactful results without the complexity and without the cost
+              It&apos;s time to achieve clear, impactful results without the complexity and without the cost
             </p>
             <div className="flex justify-center mt-8">
               <button

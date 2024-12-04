@@ -166,7 +166,7 @@ export default function AiPdf() {
               </>
             ) : (
               <>
-                You haven't started any chats yet
+                You haven&apos;t started any chats yet
               </>
             )}
           </button>

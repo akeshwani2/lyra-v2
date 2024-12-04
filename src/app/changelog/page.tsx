@@ -14,7 +14,7 @@ import userImage from "@/assets/users.png";
 import dashImage from "@/assets/ui.png";
 import productImage from "../../../public/assets/product-image.png";
 import { Heart } from "lucide-react";
-
+import Image from "next/image";
 export default function ChangelogPage() {
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -38,9 +38,11 @@ export default function ChangelogPage() {
         className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 cursor-pointer"
         onClick={() => setSelectedImage(null)}
       >
-        <img
+        <Image
           src={selectedImage}
           alt="Enlarged view"
+          width={1200}
+          height={800}
           className="max-w-[90vw] max-h-[90vh] object-contain"
         />
       </div>
@@ -78,7 +80,7 @@ export default function ChangelogPage() {
           {/* Header */}
           <div className="text-center space-y-4 max-w-3xl mx-auto">
             <h1 className="text-6xl md:leading-none font-semibold tracking-tighter bg-white bg-[radial-gradient(100%_100%_at_top_left,white,white,rgb(74,72,138,.5))] text-transparent bg-clip-text text-center pb-1">
-              What's New in Lyra
+              What&apos;s New in Lyra
             </h1>
             <p className="text-xl text-white/70">
               All the new updates and improvements to Lyra.
@@ -108,7 +110,7 @@ export default function ChangelogPage() {
                 className="border border-white/20 p-4 rounded-xl mt-3 lg:mt-0 cursor-pointer hover:border-white/40 transition-colors"
                 onClick={() => setSelectedImage(dashImage.src)}
               >
-                <img src={dashImage.src} alt="dashImage" />
+                <Image src={dashImage.src} alt="dashImage" width={800} height={600} />
               </div>
             </article>
             <article className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
@@ -127,7 +129,7 @@ export default function ChangelogPage() {
               className="border border-white/20 p-4 rounded-xl mt-3 lg:mt-0 cursor-pointer hover:border-white/40 transition-colors"
               onClick={() => setSelectedImage(productImage.src)}
             >
-              <img src={productImage.src} alt="productImage" />
+              <Image src={productImage.src} alt="productImage" width={800} height={600} />
               </div>
             </article>
             <hr className="border-t border-white/20 my-12" />
@@ -141,18 +143,18 @@ export default function ChangelogPage() {
                   Redesigned landing page
                 </h2>
                 <p className="text-white/70 leading-relaxed">
-                  This week I improved a few features that weren't quite living
-                  up to their potential. They each had small limitations that
-                  were annoying and prevented me and some users from using them
-                  well, or at all. I decided to give the landing page a makeover
-                  to make it more modern and user-friendly.
+                  This week I improved a few features that weren&apos;t quite
+                  living up to their potential. They each had small limitations
+                  that were annoying and prevented me and some users from using
+                  them well, or at all. I decided to give the landing page a
+                  makeover to make it more modern and user-friendly.
                 </p>
               </div>
               <div
                 className="border border-white/20 p-4 rounded-xl mt-3 lg:mt-0 cursor-pointer hover:border-white/40 transition-colors"
                 onClick={() => setSelectedImage(bgImage.src)}
               >
-                <img src={bgImage.src} alt="bgImage" />
+                <Image src={bgImage.src} alt="bgImage" width={800} height={600} />
               </div>
             </article>
             <hr className="border-t border-white/20 my-12" />
@@ -169,7 +171,7 @@ export default function ChangelogPage() {
                   Thank you to all of you incredible users who have embraced
                   Lyra! Your support and feedback have been invaluable in
                   shaping my journey. I am committed to continuously improving
-                  and enhancing your experience, and I couldn't have done it
+                  and enhancing your experience, and I couldn&apos;t have done it
                   without you. Your enthusiasm inspires me every day to innovate
                   and create a better platform for everyone.
                 </p>
@@ -178,7 +180,7 @@ export default function ChangelogPage() {
                 className="border border-white/20 p-4 rounded-xl mt-3 lg:mt-0 cursor-pointer hover:border-white/40 transition-colors"
                 onClick={() => setSelectedImage(userImage.src)}
               >
-                <img src={userImage.src} alt="userImage" />
+                <Image src={userImage.src} alt="userImage" />
               </div>
             </article>
 
@@ -194,7 +196,7 @@ export default function ChangelogPage() {
                 </h2>
                 <p className="text-white/70 leading-relaxed">
                   I have added a new feature that allows you to take notes using
-                  AI. When stuck on a topic or don't have time to take notes,
+                  AI. When stuck on a topic or don&apos;t have time to take notes,
                   you can use the AI to enhance your notes for you simply by
                   clicking a button.
                 </p>
@@ -203,7 +205,7 @@ export default function ChangelogPage() {
                 className="border border-white/20 p-4 rounded-xl mt-3 lg:mt-0 cursor-pointer hover:border-white/40 transition-colors"
                 onClick={() => setSelectedImage(noteImage.src)}
               >
-                <img src={noteImage.src} alt="noteImage" />
+                <Image src={noteImage.src} alt="noteImage" width={800} height={600} />
               </div>
             </article>
 
@@ -222,14 +224,14 @@ export default function ChangelogPage() {
                   that allows you to summarize/transcribe your lectures into a
                   single document. This is a great tool for students who want to
                   quickly summarize their lectures for review or for note-taking
-                  and when they don't have time to take notes during class.
+                  and when they don&apos;t have time to take notes during class.
                 </p>
               </div>
               <div
                 className="border border-white/20 p-4 rounded-xl mt-3 lg:mt-0 cursor-pointer hover:border-white/40 transition-colors"
                 onClick={() => setSelectedImage(scribeImage.src)}
               >
-                <img src={scribeImage.src} alt="scribeImage" />
+                <Image src={scribeImage.src} alt="scribeImage" width={800} height={600} />
               </div>
             </article>
           </div>
