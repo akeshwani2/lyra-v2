@@ -55,6 +55,7 @@ const FeatureTab = (
 
   const maskImage = useMotionTemplate`radial-gradient(80px 80px at ${xPercentage}% ${yPercentage}%,black,transparent)`;
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (!tabRef.current || !props.selected) return;
     xPercentage.set(0);

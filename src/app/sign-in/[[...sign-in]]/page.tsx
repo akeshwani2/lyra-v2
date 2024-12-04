@@ -18,6 +18,7 @@ const useRelativeMousePosition = (to: RefObject<HTMLElement>) => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const updateMousePosition = (event: MouseEvent) => {
       if (!to.current) return;
