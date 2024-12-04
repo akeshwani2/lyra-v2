@@ -100,7 +100,7 @@ export default function Page() {
   return (
     <div 
       ref={containerRef}
-      className="min-h-screen h-full flex flex-col bg-black relative overflow-hidden group"
+      className="min-h-screen flex flex-col bg-black relative group"
       >
       <motion.div 
         className="absolute inset-0 bg-black"
