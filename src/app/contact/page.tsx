@@ -131,7 +131,7 @@ export default function Page() {
       {/* Main content */}
       <div className="flex-1 flex items-start z-[2] relative">
         <div className="container relative">
-          <div className='mx-auto mt-20'>
+          <div className='mx-auto mt-20 mb-20'>
             {/* Contact Form */}
             <h1 className="text-6xl md:leading-none font-semibold tracking-tighter bg-white bg-[radial-gradient(100%_100%_at_top_left,white,white,rgb(74,72,138,.5))] text-transparent bg-clip-text text-center sm:pb-3 md:pb-5 lg:pb-7">
               Help me improve Lyra!
